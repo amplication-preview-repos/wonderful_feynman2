@@ -1,0 +1,28 @@
+import * as React from "react";
+
+import {
+  Create,
+  SimpleForm,
+  CreateProps,
+  DateTimeInput,
+  NumberInput,
+  ReferenceInput,
+  SelectInput,
+} from "react-admin";
+
+import { UserTitle } from "../user/UserTitle";
+
+export const FocusSessionCreate = (props: CreateProps): React.ReactElement => {
+  return (
+    <Create {...props}>
+      <SimpleForm>
+        <DateTimeInput label="endTime" source="endTime" />
+        <NumberInput step={1} label="focusLevel" source="focusLevel" />
+        <DateTimeInput label="startTime" source="startTime" />
+        <ReferenceInput source="user.id" reference="User" label="User">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
+      </SimpleForm>
+    </Create>
+  );
+};
